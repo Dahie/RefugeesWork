@@ -40,8 +40,6 @@ class Lead < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
 
-
-
   # :::::::::::::: LEAD/NEW forms :::::::::::::::::::
 
   def current_step
