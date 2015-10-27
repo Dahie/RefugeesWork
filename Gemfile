@@ -49,6 +49,12 @@ gem 'formtastic'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-swagger'
+gem 'roar'
+gem 'grape-swagger-rails'
+
 # Use unicorn as the app server
 
 # Use Capistrano for deployment
@@ -59,6 +65,7 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
   gem 'sqlite3', '1.3.9'
+  gem 'grape-raketasks'
   gem 'better_errors'
   gem 'quiet_assets'
 end

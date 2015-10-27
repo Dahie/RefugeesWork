@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: 'registrations'}
 
+  mount GrapeSwaggerRails::Engine => '/swagger'
+  mount API => '/api'
+
   resources :users do
     match '/users/:id/edit',            to: 'users#edit',       via: 'edit'
     member do
