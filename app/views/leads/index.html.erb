@@ -1,28 +1,29 @@
 <div class="body_leads_index">
 
-<div class="columns">
-<ul class="wookmark">
-  <% if @leads.present? %>
-    <% @sorted_leads.each do |lead| %>
-      <div class="lead_box">
-          <%= render 'lead_body_for_index', :lead => lead %>
+  <div class="columns">
+    <% if @leads.present? %>
+      <ul class="wookmark">
+        <% @leads.each do |lead| %>
+          <div class="lead_box">
+            <%= render 'lead_body_for_index', lead: lead %>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="leads_index_no_leads_available">
+        <%= I18n.t'leadsindex-notification.no-leads-available' %>
       </div>
-      <% end %>
-</ul>
+    <% end %>
+  </div>
+  <script type="text/javascript">
+      var leadboxes = document.querySelectorAll('.lead_box');
+      for(var i = 0; i < leadboxes.length; i++) {
+        (function leadbox (ID) {
+          leadboxes[ID].addEventListener('click', function onClick (event) {
+            var leadpath =leadboxes[ID].querySelector('a').getAttribute('href');
+            window.location.href = leadpath;
+          });
+        })(i);
+      }
+  </script>
 </div>
-  <% else%>
-    <div class="leads_index_no_leads_available">
-      <%= I18n.t'leadsindex-notification.no-leads-available' %>
-    </div>
-  <% end %>
-<script type="text/javascript">
-    var leadboxes = document.querySelectorAll('.lead_box');
-    for(var i = 0; i < leadboxes.length; i++) {
-      (function leadbox (ID) {
-        leadboxes[ID].addEventListener('click', function onClick (event) {
-          var leadpath =leadboxes[ID].querySelector('a').getAttribute('href');
-          window.location.href = leadpath;
-        });
-      })(i);
-    }
-</script>
